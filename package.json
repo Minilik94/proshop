@@ -1,0 +1,29 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "e-commerce store built using MERN stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./backend/server.js ",
+    "server": "nodemon ./backend/server.js ",
+    "client": "npm run dev --prefix frontend",
+    "preview": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node ./backend/seeder.js",
+    "data:destroy": "node ./backend/seeder.js -d"
+  },
+  "author": "Minilik Zeru",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.8.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.7"
+  }
+}
