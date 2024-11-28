@@ -8,6 +8,7 @@ import connectDB from "./config/db.js";
 dotenv.config()
 import productRoute from "./routes/productRoute.js"
 import userRoute from "./routes/userRoute.js"
+import orderRoute from "./routes/orderRoute.js"
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js"
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
@@ -35,6 +36,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoute)
 app.use('/api/users', userRoute)
+app.use('/api/orders', orderRoute)
 
 app.use(notFound)
 app.use(errorHandler)
