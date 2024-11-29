@@ -45,7 +45,6 @@ import { app } from "./app.js";
 dotenv.config({ path: "./.env" });
 const DB = process.env.MONGO_URL
 mongoose.connect(DB, {
-    useNewUrlParser: true,
     useUnifiedTopology: true,
 })
     .then(() => console.log('DB Connected Successfuly!'))
