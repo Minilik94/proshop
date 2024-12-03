@@ -1,5 +1,5 @@
 import { setCredentials } from "./authSlice";
-import { USERS_URL } from "../constants";
+import { ORDERS_URL, USERS_URL } from "../constants";
 import { apiSlice } from "./apiSlice";
 
 const usersApiSlice = apiSlice.injectEndpoints({
@@ -8,6 +8,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${USERS_URL}/auth`,
         method: "POST",
+        credentials: "include",
         body: data,
       }),
     }),
@@ -26,8 +27,26 @@ const usersApiSlice = apiSlice.injectEndpoints({
         method: "POST",
       }),
     }),
+    profile: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/profile`,
+        method: "PUT",
+        body: data,
+      }),
+    }),
+    getMyOrders: builder.query({
+      query: () => ({
+        url: `${ORDERS_URL}/myorders`,
+      }),
+      keepUnusedDataFor: 5,
+    }),
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRegisterMutation } =
-  usersApiSlice;
+export const {
+  useLoginMutation,
+  useLogoutMutation,
+  useRegisterMutation,
+  useProfileMutation,
+  useGetMyOrdersQuery,
+} = usersApiSlice;
